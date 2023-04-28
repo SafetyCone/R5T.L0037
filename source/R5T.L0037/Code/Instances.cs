@@ -5,6 +5,36 @@ namespace R5T.L0037
 {
     public static class Instances
     {
-		
+        public static F0000.IActionOperations ActionOperations => F0000.ActionOperations.Instance;
+        public static F0000.IActionOperator ActionOperator => F0000.ActionOperator.Instance;
+        public static F0053.ICodeFileGenerator CodeFileGenerator => F0053.CodeFileGenerator.Instance;
+        public static Z0036.ICommitMessages CommitMessages => Z0036.CommitMessages.Instance;
+        public static L0031.IContextOperator ContextOperator => L0031.ContextOperator.Instance;
+        public static F0041.IDirectoryPathOperator DirectoryPathOperator => F0041.DirectoryPathOperator.Instance;
+        public static F0041.IGitHubOperator GitHubOperator => F0041.GitHubOperator.Instance;
+        public static L0036.IGitHubRepositoryContextOperator GitHubRepositoryContextOperator => L0036.GitHubRepositoryContextOperator.Instance;
+        public static F0019.IGitOperator GitOperator => F0019.GitOperator.Instance;
+        public static ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator => L0037.LocalGitRepositoryContextOperator.Instance;
+        public static F0042.ILocalRepositoryOperator LocalRepositoryOperator => F0042.LocalRepositoryOperator.Instance;
+        public static Internal.ILocalRepositoryContextOperator LocalRepositoryContextOperator_Internal => Internal.LocalRepositoryContextOperator.Instance;
+        public static Internal.ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator_Internal => Internal.LocalGitRepositoryContextOperator.Instance;
+        public static F0059.ILoggingOperator LoggingOperator => F0059.LoggingOperator.Instance;
+        public static F0002.IPathOperator PathOperator => F0002.PathOperator.Instance;
+        public static L0033.IProjectFileContextOperator ProjectFileContextOperator => L0033.ProjectFileContextOperator.Instance;
+        public static F0052.IProjectPathsOperator ProjectPathsOperator => F0052.ProjectPathsOperator.Instance;
+        public static IRepositoryContextConstructors RepositoryContextConstructors => L0037.RepositoryContextConstructors.Instance;
+        public static IRepositoryContextDestructors RepositoryContextDestructors => L0037.RepositoryContextDestructors.Instance;
+        public static Internal.IRepositoryContextOperator RepositoryContextOperator_Internal => Internal.RepositoryContextOperator.Instance;
+        public static F0042.F002.IRepositoryFilesOperator RepositoryFilesOperator => F0042.F002.RepositoryFilesOperator.Instance;
+        public static F0042.IRepositoryOperator RepositoryOperator => F0042.RepositoryOperator.Instance;
+        public static F0057.IRepositoryPathsOperator RepositoryPathsOperator => F0057.RepositoryPathsOperator.Instance;
+        public static Internal.ISolutionContextOperator SolutionContextOperator_Internal => Internal.SolutionContextOperator.Instance;
+        public static ISolutionContextOperations SolutionContextOperations => L0037.SolutionContextOperations.Instance;
+        public static F0024.ISolutionFileGenerator SolutionFileGenerator => F0024.SolutionFileGenerator.Instance;
+        public static F0050.ISolutionFileNameOperator SolutionFileNameOperator => F0050.SolutionFileNameOperator.Instance;
+        public static F0024.ISolutionFileOperator SolutionFileOperator => F0024.SolutionFileOperator.Instance;
+        public static F0050.ISolutionPathsOperator SolutionPathsOperator => F0050.SolutionPathsOperator.Instance;
+        public static Extensions.IStringOperator StringOperator_Extensions => Extensions.StringOperator.Instance;
+        public static F0054.ITextFileGenerator TextFileGenerator => F0054.TextFileGenerator.Instance;
     }
 }

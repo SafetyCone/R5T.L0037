@@ -13,5 +13,13 @@ namespace R5T.L0037.Construction
     {
         public IProjectFilePath ConsoleProjectFilePath { get; set; }
         public ISolutionFilePath SolutionFilePath { get; set; }
+
+        public IProjectFilePath ProjectFilePath {
+            get => this.ConsoleProjectFilePath;
+            set
+            {
+                this.ConsoleProjectFilePath = value;
+            }
+        }
     }
 }

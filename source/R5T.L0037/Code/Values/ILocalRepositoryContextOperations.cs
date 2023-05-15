@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using R5T.F0000.Extensions;
+using R5T.L0039.T000;
 using R5T.L0032.T000;
 using R5T.L0032.T000.Extensions;
 using R5T.T0131;
@@ -25,7 +26,7 @@ namespace R5T.L0037
                     solutionName,
                     operations);
 
-        public delegate Func<ILocalRepositoryContext, Task> In_SolutionContext_Params(
+        public delegate Func<N001.ILocalRepositoryContext, Task> In_SolutionContext_Params(
             ISolutionName solutionName,
             params Func<ISolutionContext, Task>[] operations);
 
@@ -42,7 +43,7 @@ namespace R5T.L0037
                     context,
                     solutionName,
                     operations
-                        .Prepend(Instances.SolutionContextOperations.Create_SolutionFile));
+                        .Prepend(Instances.SolutionContextOperations.Create_New_SolutionFile));
 
         public Task<IRepositoryUrl> Get_RepositoryUrl(ILocalGitRepositoryContext context)
         {

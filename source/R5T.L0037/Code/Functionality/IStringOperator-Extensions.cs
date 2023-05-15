@@ -13,5 +13,11 @@ namespace R5T.L0037.Extensions
             var output = new LocalRepositoryDirectoryPath(value);
             return output;
         }
+
+        public IRepositoryDirectoryPath ToRepositoryDirectoryPath(string value)
+        {
+            var output = new RepositoryDirectoryPath(value);
+            return output;
+        }
     }
 }

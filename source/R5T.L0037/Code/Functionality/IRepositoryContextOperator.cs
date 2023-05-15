@@ -25,5 +25,18 @@ namespace R5T.L0037
                 operations,
                 Instances.RepositoryContextDestructors.Default);
         }
+
+        public Task In_RepositoryContext(
+            IRepositoryName repositoryName,
+            ITextOutput textOutput,
+            params Func<N001.IRepositoryContext, Task>[] operations)
+        {
+            return Instances.ContextOperator.In_Context(
+                Instances.RepositoryContextConstructors.Default(
+                    repositoryName,
+                    textOutput),
+                operations,
+                Instances.RepositoryContextDestructors.Default);
+        }
     }
 }

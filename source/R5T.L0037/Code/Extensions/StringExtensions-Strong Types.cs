@@ -9,5 +9,10 @@ namespace R5T.L0037.Extensions
         {
             return Instances.StringOperator_Extensions.ToLocalRepositoryDirectoryPath(value);
         }
+
+        public static ILocalRepositoryDirectoryPath ToRepositoryDirectoryPath(this string value)
+        {
+            return Instances.StringOperator_Extensions.ToRepositoryDirectoryPath(value);
+        }
     }
 }

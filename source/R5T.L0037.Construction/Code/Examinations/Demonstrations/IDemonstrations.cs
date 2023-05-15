@@ -1,19 +1,25 @@
 using System;
 using System.Threading.Tasks;
 
+using R5T.F0000;
 using R5T.F0124.Extensions;
 using R5T.L0031.Extensions;
 using R5T.L0032.T000;
 using R5T.L0032.T000.Extensions;
 using R5T.L0033;
+using R5T.L0033.T000;
 using R5T.L0036.N001;
-using R5T.L0037.N001;
+using R5T.L0039.T000;
 using R5T.L0038;
+using R5T.L0040.T000;
 using R5T.T0141;
 using R5T.T0161.Extensions;
 using R5T.T0172;
 using R5T.T0172.Extensions;
+using R5T.T0184.Extensions;
 using R5T.T0187.Extensions;
+
+using R5T.L0037.Extensions;
 
 
 namespace R5T.L0037.Construction
@@ -21,6 +27,426 @@ namespace R5T.L0037.Construction
     [DemonstrationsMarker]
     public partial interface IDemonstrations : IDemonstrationsMarker
     {
+        public async Task Add_LibraryProject_ToSolution()
+        {
+            /// Inputs.
+            var solutionFilePath =
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.Construction.sln"
+                .ToSolutionFilePath()
+                ;
+            var projectName =
+                "R5T.L0039.O001"
+                .ToProjectName()
+                ;
+            var projectDescription =
+                "Project-related solution context operations."
+                .ToProjectDescription()
+                ;
+            var repositoryUrl = new IsSet<IRepositoryUrl>();
+
+
+            /// Run.
+            var projectNamespaceName = Instances.ProjectNamespaceNamesOperator.Get_DefaultProjectNamespaceName(projectName);
+
+            var (humanOutputTextFilePath, logFilePath) = await Instances.ApplicationContextOperator.In_ApplicationContext_Undated(
+                Instances.Values.ApplicationName,
+                ApplicationContextOperation
+            );
+
+            async Task ApplicationContextOperation(
+                IApplicationContext applicationContext)
+            {
+                await Instances.SolutionContextOperator.In_Modify_SolutionContext(
+                    solutionFilePath,
+                    applicationContext.TextOutput,
+                    SolutionContextOperation);
+            }
+
+            async Task SolutionContextOperation(ISolutionContext solutionContext)
+            {
+                await solutionContext.Run(
+                    Instances.SolutionContextOperations.In_Add_New_ProjectContext(
+                        projectName,
+                        Create_LibraryProjectOperation
+                    )
+                );
+            }
+
+            async Task Create_LibraryProjectOperation(IProjectContext projectContext)
+            {
+                await projectContext.Run(
+                    Instances.ProjectContextOperations.Create_New_Project(
+                        Instances.ProjectFileContextOperations.Create_LibraryProjectFile(
+                            projectDescription,
+                            repositoryUrl
+                        ),
+                        Instances.ActionOperations.DoNothing,
+                        Instances.ProjectContextOperations.Create_LibraryProject(
+                            projectName,
+                            projectDescription,
+                            projectNamespaceName
+                        )
+                    )
+                );
+            }
+
+            Instances.NotepadPlusPlusOperator.Open(
+                humanOutputTextFilePath,
+                logFilePath);
+        }
+
+        /// <summary>
+        /// Creates a project, in a solution, in a specified solution directory.
+        /// </summary>
+        public async Task Create_Project_InSolution_InDirectory()
+        {
+            /// Inputs.
+            var deleteSolutionDirectory_IfExists = true;
+            var solutionDirectoryPath =
+                //""
+                //.ToSolutionDirectoryPath()
+                Instances.ExampleSolutionDirectoryPaths.Test_Project
+                ;
+            var solutionName =
+                //""
+                //.ToSolutionName()
+                Instances.ExampleSolutionNames.Test_Project
+                ;
+            var projectDescription = "Test project.".ToProjectDescription();
+            var repositoryUrl = new IsSet<IRepositoryUrl>();
+
+
+            /// Run.
+            var projectName = Instances.ProjectNameOperator.Get_DefaultProjectName(solutionName);
+            var projectNamespaceName = projectName.Value.ToNamespaceName();
+
+            var projectInSolutionCreationOutput = new ProjectInSolutionCreationOutput();
+
+            var (humanOutputTextFilePath, logFilePath) = await Instances.ApplicationContextOperator.In_ApplicationContext_Undated(
+                Instances.Values.ApplicationName,
+                ApplicationContextOperation
+            );
+
+            async Task ApplicationContextOperation(
+                IApplicationContext applicationContext)
+            {
+                await Instances.SolutionContextOperator.In_New_SolutionContext(
+                    solutionDirectoryPath,
+                    solutionName,
+                    applicationContext.TextOutput,
+                    deleteSolutionDirectory_IfExists,
+                    Create_SolutionOperation);
+            }
+
+            async Task Create_SolutionOperation(ISolutionContext solutionContext)
+            {
+                await solutionContext.Run(
+                    Instances.SolutionContextOperations.Create_New_Solution(
+                        projectInSolutionCreationOutput,
+                        Instances.SolutionContextOperations.In_Add_New_ProjectContext(
+                            projectName,
+                            Create_ProjectOperation
+                        )
+                    )
+                );
+            }
+
+            async Task Create_ProjectOperation(IProjectContext projectContext)
+            {
+                await projectContext.Run(
+                    Instances.ProjectContextOperations.Create_New_Project(
+                        //Instances.ProjectFileContextOperations.Create_ConsoleProjectFile(
+                        //    projectDescription,
+                        //    repositoryUrl
+                        //),
+                        Instances.ProjectFileContextOperations.Create_LibraryProjectFile(
+                            projectDescription,
+                            repositoryUrl
+                        ),
+                        projectInSolutionCreationOutput,
+                        //Instances.ProjectContextOperations.Create_ConsoleProject(
+                        //    projectName,
+                        //    projectDescription,
+                        //    projectNamespaceName
+                        //)
+                        Instances.ProjectContextOperations.Create_LibraryProject(
+                            projectName,
+                            projectDescription,
+                            projectNamespaceName
+                        )
+                    )
+                );
+            }
+
+
+            Instances.VisualStudioOperator.OpenSolutionFile(
+                projectInSolutionCreationOutput.SolutionFilePath.Value);
+
+            Instances.NotepadPlusPlusOperator.Open(
+                humanOutputTextFilePath,
+                logFilePath);
+        }
+
+        /// <summary>
+        /// Test bed for project context operations.
+        /// Generates a project (project file plus other files) in a given directory.
+        /// </summary>
+        /// <remarks>
+        /// Note: creating a project is less useful than creating a solution with the project
+        /// (since you can then open the solution in Visual Studio and see the created project more easily).
+        /// </remarks>
+        public async Task Create_Project_InDirectory()
+        {
+            /// Inputs.
+            var projectDirectoryPath =
+                //""
+                //.ToProjectDirectoryPath()
+                Instances.ExampleProjectDirectoryPaths.Test_Project
+                ;
+            var projectName =
+                //""
+                //.ToProjectName()
+                Instances.ExampleProjectNames.Test_Project
+                ;
+            var projectDescription = "Test project.".ToProjectDescription();
+            var repositoryUrl = new IsSet<IRepositoryUrl>();
+
+
+            /// Run.
+            var projectNamespaceName = projectName.Value.ToNamespaceName();
+
+            var (humanOutputTextFilePath, logFilePath) = await Instances.ApplicationContextOperator.In_ApplicationContext(
+                Instances.Values.ApplicationName,
+                ApplicationContextOperation
+            );
+
+            async Task ApplicationContextOperation(
+                IApplicationContext applicationContext)
+            {
+                await Instances.ProjectContextOperator.In_ProjectContext(
+                    projectDirectoryPath,
+                    projectName,
+                    applicationContext.TextOutput,
+                    ProjectOperation);
+            }
+
+            async Task ProjectOperation(
+                IProjectContext projectContext)
+            {
+                await projectContext.Run(
+                    Instances.ProjectContextOperations.In_New_ProjectFileContext(
+                        ProjectFileContextOperation),
+                    ConsoleProjectCreationOperation
+                );
+            }
+
+            Task ProjectFileContextOperation(
+                IProjectFileContext projectFileContext)
+            {
+                projectFileContext.Run(
+                    Instances.ProjectElementContextOperations.Set_SDK_Default,
+                    Instances.ProjectElementContextOperations.Set_TargetFramework_Console,
+                    Instances.ProjectElementContextOperations.Set_OutputType_Exe,
+                    Instances.ProjectElementContextOperations.Combine(
+                        Instances.ProjectElementContextOperations.Set_Version_Default,
+                        Instances.ProjectElementContextOperations.Set_Author_DCoats,
+                        Instances.ProjectElementContextOperations.Set_Company_Rivet,
+                        Instances.ProjectElementContextOperations.Set_Copyright_Rivet,
+                        Instances.ProjectElementContextOperations.Set_Description(
+                            projectDescription.Value),
+                        Instances.ProjectElementContextOperations.Set_PackageLicenseExpression_MIT,
+                        Instances.ProjectElementContextOperations.Set_PackageRequireLicenseAcceptance,
+                        Instances.ProjectElementContextOperations.Set_RepositoryUrl(
+                            repositoryUrl)
+                    )
+                );
+
+                return Task.CompletedTask;
+            }
+
+            Task ConsoleProjectCreationOperation(
+                IProjectContext projectContext)
+            {
+                return projectContext.Run(
+                    Instances.ProjectContextOperations.Create_ProjectPlanFile(
+                projectName,
+                        projectDescription),
+                    Instances.ProjectContextOperations.Create_InstancesFile(
+                        projectNamespaceName),
+                    Instances.ProjectContextOperations.Create_DocumentationFile(
+                        projectNamespaceName,
+                        projectDescription),
+                    Create_ProgramFile
+                );
+
+                Task Create_ProgramFile(
+                    IProjectContext _)
+                {
+                    var programFilePath = Instances.ProjectPathsOperator.GetProgramFilePath(
+                        projectContext.ProjectFilePath.Value);
+
+                    Instances.CodeFileGenerator.CreateProgramFile(
+                        programFilePath,
+                        projectNamespaceName.Value);
+
+                    return Task.CompletedTask;
+                }
+            }
+
+            Instances.WindowsExplorerOperator.OpenDirectoryInExplorer(
+                projectDirectoryPath.Value);
+        }
+
+        /// <summary>
+        /// Create a solution in an existing repository.
+        /// </summary>
+        /// <returns></returns>
+        public async Task Create_Solution_InExistingRepository()
+        {
+            /// Inputs.
+            var repositoryDirectoryPath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0037".ToRepositoryDirectoryPath();
+            var repositoryName = "R5T.L0037".ToRepositoryName();
+            var solutionName = "R5T.L0037.Q000".ToSolutionName();
+            var projectDescription = "Explorations, experiments, and demonstrations from the R5T.L0037 code generation library.".ToProjectDescription();
+
+
+            /// Run.
+            var projectName = Instances.ProjectNameOperator.Get_DefaultProjectName(solutionName);
+            var projectNamespaceName = projectName.Value.ToNamespaceName();
+
+            LibraryRepositoryCreationOutput libraryRepositoryCreationOutput = new();
+
+            var (humanOutputTextFilePath, logFilePath) = await Instances.ApplicationContextOperator.In_ApplicationContext(
+                Instances.Values.ApplicationName,
+                ApplicationContextOperation
+            );
+
+            async Task ApplicationContextOperation(
+                IApplicationContext applicationContext)
+            {
+                await Instances.LocalRepositoryContextOperator.In_LocalRepositoryContext(
+                    repositoryName,
+                    repositoryDirectoryPath,
+                    applicationContext.TextOutput,
+                    repositoryContext => LocalRepositoryContextOperation(
+                        repositoryContext));
+            }
+
+            async Task LocalRepositoryContextOperation(
+                ILocalGitRepositoryContext localRepositoryContext)
+            {
+                IRepositoryUrl repositoryUrl = await Instances.LocalRepositoryContextOperations.Get_RepositoryUrl(localRepositoryContext);
+
+                await localRepositoryContext.Run(
+                    Instances.LocalGitRepositoryContextOperations.In_CommitContext(
+                        Instances.CommitMessages.InitialCommit,
+                        Instances.LocalGitRepositoryContextOperations.Add_GitIgnoreFile,
+                        Instances.LocalRepositoryContextOperations.In_NewSolutionContext(
+                            solutionName,
+                            solutionContext => SolutionContextOperation(
+                                solutionContext,
+                                repositoryUrl))
+                    )
+                );
+            }
+
+            async Task SolutionContextOperation(
+                ISolutionContext solutionContext,
+                IRepositoryUrl repositoryUrl)
+            {
+                await solutionContext.Run(
+                    Instances.SolutionContextOperations.Set_SolutionFilePath(libraryRepositoryCreationOutput),
+                    Instances.SolutionContextOperations.In_New_ProjectContext(
+                        projectName,
+                        projectContext => LibraryProjectOperation(
+                            projectContext,
+                            solutionContext,
+                            repositoryUrl)
+                    )
+                );
+            }
+
+            async Task LibraryProjectOperation(
+                IProjectContext projectContext,
+                ISolutionContext solutionContext,
+                IRepositoryUrl repositoryUrl)
+            {
+                libraryRepositoryCreationOutput.LibraryProjectFilePath = projectContext.ProjectFilePath;
+
+                await projectContext.Run(
+                    Instances.ProjectContextOperations.In_New_ProjectFileContext(
+                        projectFileContext => ProjectFileContextOperation(
+                            projectFileContext,
+                            solutionContext,
+                            repositoryUrl)),
+                    ConsoleProjectCreationOperation,
+                    Instances.ProjectContextOperations.Add_ToSolution(
+                        solutionContext.SolutionFilePath)
+                );
+            }
+
+            Task ProjectFileContextOperation(
+                IProjectFileContext projectFileContext,
+                ISolutionContext solutionContext,
+                IRepositoryUrl repositoryUrl)
+            {
+                projectFileContext.Run(
+                    Instances.ProjectElementContextOperations.Set_SDK_Default,
+                    Instances.ProjectElementContextOperations.Set_TargetFramework_Console,
+                    Instances.ProjectElementContextOperations.Set_OutputType_Exe,
+                    Instances.ProjectElementContextOperations.Combine(
+                        Instances.ProjectElementContextOperations.Set_Version_Default,
+                        Instances.ProjectElementContextOperations.Set_Author_DCoats,
+                        Instances.ProjectElementContextOperations.Set_Company_Rivet,
+                        Instances.ProjectElementContextOperations.Set_Copyright_Rivet,
+                        Instances.ProjectElementContextOperations.Set_Description(
+                            projectDescription.Value),
+                        Instances.ProjectElementContextOperations.Set_PackageLicenseExpression_MIT,
+                        Instances.ProjectElementContextOperations.Set_PackageRequireLicenseAcceptance,
+                        Instances.ProjectElementContextOperations.Set_RepositoryUrl_Value(
+                            repositoryUrl)
+                    )
+                );
+
+                return Task.CompletedTask;
+            }
+
+            Task ConsoleProjectCreationOperation(
+                IProjectContext projectContext)
+            {
+                return projectContext.Run(
+                    Instances.ProjectContextOperations.Create_ProjectPlanFile(
+                projectName,
+                        projectDescription),
+                    Instances.ProjectContextOperations.Create_InstancesFile(
+                        projectNamespaceName),
+                    Instances.ProjectContextOperations.Create_DocumentationFile(
+                        projectNamespaceName,
+                        projectDescription),
+                    Create_ProgramFile
+                );
+
+                Task Create_ProgramFile(
+                    IProjectContext _)
+                {
+                    var programFilePath = Instances.ProjectPathsOperator.GetProgramFilePath(
+                        projectContext.ProjectFilePath.Value);
+
+                    Instances.CodeFileGenerator.CreateProgramFile(
+                        programFilePath,
+                        projectNamespaceName.Value);
+
+                    return Task.CompletedTask;
+                }
+            }
+
+            Instances.VisualStudioOperator.OpenSolutionFile(
+                libraryRepositoryCreationOutput.SolutionFilePath.Value);
+
+            Instances.NotepadPlusPlusOperator.Open(
+                humanOutputTextFilePath);
+        }
+
         /// <summary>
         /// Creates a new repository, with a solution, with a project, with a program code file.
         /// </summary>
@@ -115,7 +541,7 @@ namespace R5T.L0037.Construction
             {
                 await solutionContext.Run(
                     Instances.SolutionContextOperations.Set_SolutionFilePath(consoleRepositoryCreationOutput),
-                    Instances.SolutionContextOperations.In_CreateProjectContext(
+                    Instances.SolutionContextOperations.In_New_ProjectContext(
                         projectName,
                         projectContext => ConsoleProjectOperation(
                             projectContext,
@@ -266,7 +692,7 @@ namespace R5T.L0037.Construction
                                                         {
                                                             await solutionContext.Run(
                                                                 Instances.SolutionContextOperations.Set_SolutionFilePath(consoleRepositoryCreationOutput),
-                                                                Instances.SolutionContextOperations.In_CreateProjectContext(
+                                                                Instances.SolutionContextOperations.In_New_ProjectContext(
                                                                     projectName,
                                                                     async projectContext =>
                                                                     {

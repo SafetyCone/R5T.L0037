@@ -11,11 +11,9 @@ namespace R5T.L0037
     /// Name and owner name based repository context.
     /// </summary>
     [ContextDefinitionMarker]
-    public interface IRepositoryContext : IContextDefinitionMarker
+    public interface IRepositoryContext : IContextDefinitionMarker,
+        N001.IRepositoryContext
     {
-        public IRepositoryName RepositoryName { get; }
         public IRepositoryOwnerName OwnerName { get; }
-
-        public ITextOutput TextOutput { get; }
     }
 }

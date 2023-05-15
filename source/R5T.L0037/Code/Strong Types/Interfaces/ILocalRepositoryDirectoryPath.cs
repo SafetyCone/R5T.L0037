@@ -11,6 +11,8 @@ namespace R5T.L0037
     /// Quality-of-life name for <see cref="ILocalGitRepositoryDirectoryPath"/>.
     /// </para>
     /// </summary>
+    /// <remarks>
+    /// </remarks>
     [StrongTypeMarker]
     public interface ILocalRepositoryDirectoryPath : IStrongTypeMarker,
         ILocalGitRepositoryDirectoryPath

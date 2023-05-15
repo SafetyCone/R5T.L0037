@@ -10,7 +10,7 @@ namespace R5T.L0037
     /// </summary>
     [ContextDefinitionMarker]
     public interface ILocalGitRepositoryContext : IContextDefinitionMarker,
-        ILocalRepositoryContext
+        N001.ILocalRepositoryContext
     {
         public new ILocalGitRepositoryDirectoryPath DirectoryPath { get; }
     }

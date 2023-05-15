@@ -30,7 +30,7 @@ namespace R5T.L0037
                     RepositoryName = repositoryName,
                 },
                 operations,
-                context => Instances.ActionOperations.DoNothing(context));
+                context => Instances.ActionOperations.DoNothing_Synchronous(context));
         }
     }
 }

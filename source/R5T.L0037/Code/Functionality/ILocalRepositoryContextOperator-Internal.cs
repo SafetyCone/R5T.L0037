@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using R5T.L0039.T000;
 using R5T.T0132;
 using R5T.T0172.Extensions;
 using R5T.T0187;
@@ -34,17 +35,17 @@ namespace R5T.L0037.Internal
         }
 
         public async Task In_SolutionContext(
-            ILocalRepositoryContext localRepositoryContext,
+            N001.ILocalRepositoryContext localRepositoryContext,
             ISolutionName solutionName,
             IEnumerable<Func<ISolutionContext, Task>> operations)
         {
             var solutionDirectoryPath = Instances.RepositoryPathsOperator.GetSourceDirectoryPath(
-                localRepositoryContext.DirectoryPath.Value);
+                localRepositoryContext.DirectoryPath.Value)
+                .ToSolutionDirectoryPath();
 
-            var solutionFilePath = Instances.SolutionPathsOperator.GetSolutionFilePath(
+            var solutionFilePath = Instances.SolutionPathsOperator.Get_SolutionFilePath(
                 solutionDirectoryPath,
-                solutionName.Value)
-                .ToSolutionFilePath();
+                solutionName);
 
             var solutionContext = new SolutionContext
             {

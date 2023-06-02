@@ -18,10 +18,8 @@ namespace R5T.L0037
         public static F0041.IGitHubOperator GitHubOperator => F0041.GitHubOperator.Instance;
         public static L0036.IGitHubRepositoryContextOperator GitHubRepositoryContextOperator => L0036.GitHubRepositoryContextOperator.Instance;
         public static F0019.IGitOperator GitOperator => F0019.GitOperator.Instance;
-        public static ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator => L0037.LocalGitRepositoryContextOperator.Instance;
+        public static L0047.F000.ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator => L0047.F000.LocalGitRepositoryContextOperator.Instance;
         public static F0042.ILocalRepositoryOperator LocalRepositoryOperator => F0042.LocalRepositoryOperator.Instance;
-        public static Internal.ILocalRepositoryContextOperator LocalRepositoryContextOperator_Internal => Internal.LocalRepositoryContextOperator.Instance;
-        public static Internal.ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator_Internal => Internal.LocalGitRepositoryContextOperator.Instance;
         public static F0059.ILoggingOperator LoggingOperator => F0059.LoggingOperator.Instance;
         public static F0002.IPathOperator PathOperator => F0002.PathOperator.Instance;
         public static L0040.IProjectContextOperations ProjectContextOperations => L0040.ProjectContextOperations.Instance;
@@ -34,8 +32,6 @@ namespace R5T.L0037
         public static F0056.IProjectOperations ProjectOperations => F0056.ProjectOperations.Instance;
         public static IProjectPathsOperator ProjectPathsOperator => L0037.ProjectPathsOperator.Instance;
         public static IRepositoryContextConstructors RepositoryContextConstructors => L0037.RepositoryContextConstructors.Instance;
-        public static IRepositoryContextDestructors RepositoryContextDestructors => L0037.RepositoryContextDestructors.Instance;
-        public static Internal.IRepositoryContextOperator RepositoryContextOperator_Internal => Internal.RepositoryContextOperator.Instance;
         public static F0042.F002.IRepositoryFilesOperator RepositoryFilesOperator => F0042.F002.RepositoryFilesOperator.Instance;
         public static F0042.IRepositoryOperator RepositoryOperator => F0042.RepositoryOperator.Instance;
         public static F0057.IRepositoryPathsOperator RepositoryPathsOperator => F0057.RepositoryPathsOperator.Instance;

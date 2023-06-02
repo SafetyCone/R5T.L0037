@@ -21,7 +21,7 @@ namespace R5T.L0037
     public partial interface ISolutionContextOperations : IValuesMarker,
         L0039.ISolutionContextOperations
     {
-        public Task Create_SolutionFile(N001.ISolutionContext context)
+        public Task Create_SolutionFile(L0039.N001.ISolutionContext context)
             => Instances.SolutionContextOperator_Internal.Create_SolutionFile(context);
     }
 }

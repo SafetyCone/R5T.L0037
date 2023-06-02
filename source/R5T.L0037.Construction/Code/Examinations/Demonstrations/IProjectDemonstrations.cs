@@ -1,16 +1,22 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
+using R5T.F0000.Extensions;
 using R5T.F0124;
 using R5T.L0031.Extensions;
 using R5T.L0038;
 using R5T.L0040.T000;
 using R5T.T0141;
+using R5T.T0161;
 using R5T.T0161.Extensions;
 using R5T.T0172;
 using R5T.T0172.Extensions;
 using R5T.T0187;
+using R5T.T0193;
 using R5T.T0193.Extensions;
+using R5T.T0195.Extensions;
 
 
 namespace R5T.L0037.Construction
@@ -22,11 +28,11 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0040\source\R5T.L0040.T000\R5T.L0040.T000.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.T000\R5T.L0039.T000.csproj"
                 .ToProjectFilePath()
                 ;
             var contextTypeNameStem =
-                "ProjectContext"
+                "SolutionDirectoryContext"
                 .ToTypeNameStem()
                 ;
 
@@ -75,16 +81,27 @@ namespace R5T.L0037.Construction
                 logFilePath);
         }
 
-        public Task Add_StrongType()
+        /// <summary>
+        /// Adds one or more strong-types (with a common base type) to a project.
+        /// Creates the strong-type interface and implementation code files in the project,
+        /// but outputs the ToX() operator and extension methods to a file (since modifying the StringOperator and StringExtensions code using Roslyn is complicated).
+        /// </summary>
+        /// <remarks>
+        /// TODO: modify StringOperator and StringExtensions files to include ToX() methods.
+        /// </remarks>
+        public async Task Add_StrongTypes()
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0196\source\R5T.T0196\R5T.T0196.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0181\source\R5T.T0181\R5T.T0181.csproj"
                 .ToProjectFilePath()
                 ;
-            var strongTypeTypeNameStem =
-                "FormName"
-                .ToTypeNameStem()
+            var strongTypeTypeNameStems =
+                new[]
+                {
+                    "RazorFilePath",
+                }
+                .ToTypeNameStems()
                 ;
             var baseTypeName =
                 "string"
@@ -95,68 +112,114 @@ namespace R5T.L0037.Construction
             /// Run.
             var namespaceName = Instances.ProjectNamespaceNamesOperator.Get_DefaultProjectNamespaceName(projectFilePath);
 
-            // Interface.
-            var interfaceFilePath = Instances.ProjectPathsOperator.Get_StrongTypes_Interface_FilePath(
-                projectFilePath,
-                strongTypeTypeNameStem);
+            var stringOperatorMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
+            var stringExtensionMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
 
-            Instances.CodeFileGenerator.Write_StrongType_Definition_Synchronous(
-                interfaceFilePath,
-                strongTypeTypeNameStem,
-                namespaceName,
-                baseTypeName,
-                FileExistsBehavior.Skip);
+            void ProcessStrongTypeTypeNameStem(ITypeNameStem strongTypeTypeNameStem)
+            {
+                // Interface.
+                var interfaceFilePath = Instances.ProjectPathsOperator.Get_StrongTypes_Interface_FilePath(
+                    projectFilePath,
+                    strongTypeTypeNameStem);
 
-            // Implementation.
-            var implementationFilePath = Instances.ProjectPathsOperator.Get_StrongTypes_Implementation_FilePath(
-                projectFilePath,
-                strongTypeTypeNameStem);
+                Instances.CodeFileGenerator.Write_StrongType_Definition_Synchronous(
+                    interfaceFilePath,
+                    strongTypeTypeNameStem,
+                    namespaceName,
+                    baseTypeName,
+                    FileExistsBehavior.Skip);
 
-            Instances.CodeFileGenerator.Write_StrongType_Implementation_Synchronous(
-                implementationFilePath,
-                strongTypeTypeNameStem,
-                namespaceName,
-                baseTypeName,
-                FileExistsBehavior.Skip);
+                // Implementation.
+                var implementationFilePath = Instances.ProjectPathsOperator.Get_StrongTypes_Implementation_FilePath(
+                    projectFilePath,
+                    strongTypeTypeNameStem);
+
+                Instances.CodeFileGenerator.Write_StrongType_Implementation_Synchronous(
+                    implementationFilePath,
+                    strongTypeTypeNameStem,
+                    namespaceName,
+                    baseTypeName,
+                    FileExistsBehavior.Skip);
+
+                var stringOperatorCode = Instances.CodeGenerator.Get_StrongType_StringOperator_ToXMethod(
+                    strongTypeTypeNameStem,
+                    baseTypeName);
+
+                stringOperatorMethodsByTypeNameStem.Add(
+                    strongTypeTypeNameStem,
+                    stringOperatorCode);
+
+                var stringExtensionsCode = Instances.CodeGenerator.Get_StrongType_StringExtensions_ToXMethod(
+                    strongTypeTypeNameStem,
+                    baseTypeName);
+
+                stringExtensionMethodsByTypeNameStem.Add(
+                    strongTypeTypeNameStem,
+                    stringExtensionsCode);
+            }
+
+            var distinct = strongTypeTypeNameStems
+                .Distinct()
+                .OrderAlphabetically(x => x.Value)
+                .Now();
+
+            foreach (var strongTypeTypeNameStem in distinct)
+            {
+                ProcessStrongTypeTypeNameStem(strongTypeTypeNameStem);
+            }
 
             // Create a text file containing the ToX() methods.
             var outputTextFilePath = Instances.FilePaths.OutputTextFilePath;
 
-            var stringOperatorCode = Instances.CodeGenerator.Get_StrongType_StringOperator_ToXMethod(
-                strongTypeTypeNameStem,
-                baseTypeName);
+            var lines = stringOperatorMethodsByTypeNameStem
+                .OrderAlphabetically(x => x.Key.Value)
+                .Select(x => x.Value.Value)
+                .Append(
+                    stringExtensionMethodsByTypeNameStem
+                        .OrderAlphabetically(x => x.Key.Value)
+                        .Select(x => x.Value.Value)
+                )
+                .MakeIntoLines()
+                // Add separating blank lines.
+                .AlternateWith(Instances.Strings.NewLine_ForEnvironment)
+                .Now();
 
-            var stringExtensionsCode = Instances.CodeGenerator.Get_StrongType_StringExtensions_ToXMethod(
-                strongTypeTypeNameStem,
-                baseTypeName);
+            await Instances.FileOperator.Write_Texts(
+                outputTextFilePath,
+                lines);
 
-            Instances.CodeFileGenerator.Write_Code_Synchronous(
-                outputTextFilePath.ToCodeFilePath(),
-                (stringOperatorCode.Value + Instances.Strings.NewLine_ForEnvironment + stringExtensionsCode.Value).ToCode(),
-                FileExistsBehavior.Overwrite);
+            // Ensure project references exist for strong types.
+            await Instances.ProjectOperations.Ensure_HasProjectReferences(
+                projectFilePath.Value,
+                // Add strong-type base types.
+                Instances.ProjectFileReferences_Raw.R5T_T0179.Value,
+                // Add function marker attributes for operator. (Included as part of R5T.T0179, but make it explicit.)
+                Instances.ProjectFileReferences_Raw.R5T_T0132.Value
+                );
 
             Instances.NotepadPlusPlusOperator.Open(
                 outputTextFilePath);
-
-            return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Adds one or more project file references to a project, and updates solutions containing that project that are found in the project's directory hierarchy.
+        /// Project references can be specified as raw paths, predefined sets of references, named references, and instanced paths.
+        /// </summary>
         public async Task Add_ProjectFileReferences()
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.O0004\source\R5T.O0004\R5T.O0004.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.O0007\source\R5T.O0007\R5T.O0007.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
-                //Instances.ProjectFileReferenceSets.For_StrongTypesDefinitionLibrary
+                //Instances.ProjectFileReferenceSets.For_ContextTypeDefinitionLibrary
                 new[]
                 {
+                    //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0133\source\R5T.F0133\R5T.F0133.csproj"
+                    //.ToProjectFileReference(),
                     Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
-                    Instances.ProjectFileReferences_Raw.R5T_F0131,
-                    Instances.ProjectFileReferences_Raw.R5T_T0161,
-                    Instances.ProjectFileReferences_Raw.R5T_T0172,
-                    Instances.ProjectFileReferences_Raw.R5T_T0193
+                    //Instances.ProjectFileReferences_Raw.R5T_T0137,
                 }
                 ;
             // True, to update the recursive project references of all solutions containg the specified project.

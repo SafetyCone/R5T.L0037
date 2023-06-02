@@ -8,7 +8,8 @@ using R5T.T0184;
 namespace R5T.L0037
 {
     [ValuesMarker]
-    public partial interface IRepositoryContextConstructors : IValuesMarker
+    public partial interface IRepositoryContextConstructors : IValuesMarker,
+        L0042.F000.IRepositoryContextConstructors
     {
         public Func<IRepositoryContext> Default(
             IRepositoryName repositoryName,
@@ -19,17 +20,6 @@ namespace R5T.L0037
             {
                 RepositoryName = repositoryName,
                 OwnerName = ownerName,
-                TextOutput = textOutput,
-            };
-        }
-
-        public Func<N001.IRepositoryContext> Default(
-            IRepositoryName repositoryName,
-            ITextOutput textOutput)
-        {
-            return () => new N001.RepositoryContext
-            {
-                RepositoryName = repositoryName,
                 TextOutput = textOutput,
             };
         }

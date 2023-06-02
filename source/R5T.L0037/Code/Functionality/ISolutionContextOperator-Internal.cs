@@ -17,7 +17,7 @@ namespace R5T.L0037.Internal
     public partial interface ISolutionContextOperator : IFunctionalityMarker,
         L0039.O000.Internal.ISolutionContextOperator
     {
-        public Task Create_SolutionFile(N001.ISolutionContext solutionContext)
+        public Task Create_SolutionFile(L0039.N001.ISolutionContext solutionContext)
         {
             var solutionFileName = Instances.SolutionFileNameOperator.GetSolutionFileName_FromSolutionName(
                 solutionContext.SolutionName.Value);

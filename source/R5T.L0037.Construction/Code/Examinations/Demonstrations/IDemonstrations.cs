@@ -4,22 +4,19 @@ using System.Threading.Tasks;
 using R5T.F0000;
 using R5T.F0124.Extensions;
 using R5T.L0031.Extensions;
-using R5T.L0032.T000;
-using R5T.L0032.T000.Extensions;
-using R5T.L0033;
 using R5T.L0033.T000;
-using R5T.L0036.N001;
+using R5T.L0036.T000.N001;
 using R5T.L0039.T000;
 using R5T.L0038;
 using R5T.L0040.T000;
+using R5T.L0047.T000;
 using R5T.T0141;
 using R5T.T0161.Extensions;
-using R5T.T0172;
 using R5T.T0172.Extensions;
 using R5T.T0184.Extensions;
 using R5T.T0187.Extensions;
-
-using R5T.L0037.Extensions;
+using R5T.T0198;
+using R5T.T0200.Extensions;
 
 
 namespace R5T.L0037.Construction
@@ -27,19 +24,22 @@ namespace R5T.L0037.Construction
     [DemonstrationsMarker]
     public partial interface IDemonstrations : IDemonstrationsMarker
     {
+        /// <summary>
+        /// Creates a new library project inside an existing solution, and adds it to the solution.
+        /// </summary>
         public async Task Add_LibraryProject_ToSolution()
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0040\source\R5T.L0040.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0039.O001"
+                "R5T.L0040.O001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Project-related solution context operations."
+                "Code file generation operations from the project operations library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -76,16 +76,14 @@ namespace R5T.L0037.Construction
             {
                 await projectContext.Run(
                     Instances.ProjectContextOperations.Create_New_Project(
-                        Instances.ProjectFileContextOperations.Create_LibraryProjectFile(
+                        Instances.ProjectFileContextOperations.Setup_LibraryProjectFile(
                             projectDescription,
                             repositoryUrl
                         ),
-                        Instances.ActionOperations.DoNothing,
-                        Instances.ProjectContextOperations.Create_LibraryProject(
-                            projectName,
-                            projectDescription,
-                            projectNamespaceName
-                        )
+                        Instances.ProjectContextOperations.Setup_LibraryProject(
+                            projectDescription
+                        ),
+                        Instances.ActionOperations.DoNothing
                     )
                 );
             }
@@ -159,21 +157,19 @@ namespace R5T.L0037.Construction
                         //    projectDescription,
                         //    repositoryUrl
                         //),
-                        Instances.ProjectFileContextOperations.Create_LibraryProjectFile(
+                        Instances.ProjectFileContextOperations.Setup_LibraryProjectFile(
                             projectDescription,
                             repositoryUrl
                         ),
-                        projectInSolutionCreationOutput,
                         //Instances.ProjectContextOperations.Create_ConsoleProject(
                         //    projectName,
                         //    projectDescription,
                         //    projectNamespaceName
                         //)
-                        Instances.ProjectContextOperations.Create_LibraryProject(
-                            projectName,
-                            projectDescription,
-                            projectNamespaceName
-                        )
+                        Instances.ProjectContextOperations.Setup_LibraryProject(
+                            projectDescription
+                        ),
+                        projectInSolutionCreationOutput
                     )
                 );
             }
@@ -268,14 +264,14 @@ namespace R5T.L0037.Construction
                 IProjectContext projectContext)
             {
                 return projectContext.Run(
-                    Instances.ProjectContextOperations.Create_ProjectPlanFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
                 projectName,
                         projectDescription),
-                    Instances.ProjectContextOperations.Create_InstancesFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),
-                    Instances.ProjectContextOperations.Create_DocumentationFile(
-                        projectNamespaceName,
-                        projectDescription),
+                    Instances.ProjectContextOperations_FileGeneration.Create_DocumentationFile(
+                        projectDescription,
+                        projectNamespaceName),
                     Create_ProgramFile
                 );
 
@@ -415,14 +411,14 @@ namespace R5T.L0037.Construction
                 IProjectContext projectContext)
             {
                 return projectContext.Run(
-                    Instances.ProjectContextOperations.Create_ProjectPlanFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
                 projectName,
                         projectDescription),
-                    Instances.ProjectContextOperations.Create_InstancesFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),
-                    Instances.ProjectContextOperations.Create_DocumentationFile(
-                        projectNamespaceName,
-                        projectDescription),
+                    Instances.ProjectContextOperations_FileGeneration.Create_DocumentationFile(
+                        projectDescription,
+                        projectNamespaceName),
                     Create_ProgramFile
                 );
 
@@ -492,7 +488,9 @@ namespace R5T.L0037.Construction
             {
                 await repositoryContext.Run(
                     Instances.RepositoryContextOperations.In_CreateRepositoryContext(
-                        Instances.RepositoryContextOperations.Verify_DoesNotAlreadyExist,
+                        Instances.RepositoryContextOperations.Verify_DoesNotAlreadyExist(
+                            repositoryContext.OwnerName
+                        ),
                         Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
                             gitHubrepositoryContext => GitHubRepositoryOperation(
                                 gitHubrepositoryContext,
@@ -600,14 +598,14 @@ namespace R5T.L0037.Construction
                 IProjectContext projectContext)
             {
                 return projectContext.Run(
-                    Instances.ProjectContextOperations.Create_ProjectPlanFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
                         projectName,
                         projectDescription),
-                    Instances.ProjectContextOperations.Create_InstancesFile(
+                    Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),
-                    Instances.ProjectContextOperations.Create_DocumentationFile(
-                        projectNamespaceName,
-                        projectDescription),
+                    Instances.ProjectContextOperations_FileGeneration.Create_DocumentationFile(
+                        projectDescription,
+                        projectNamespaceName),
                     Create_ProgramFile
                 );
 
@@ -665,13 +663,15 @@ namespace R5T.L0037.Construction
                         {
                             await repositoryContext.Run(
                                 Instances.RepositoryContextOperations.In_CreateRepositoryContext(
-                                    Instances.RepositoryContextOperations.Verify_DoesNotAlreadyExist,
+                                    Instances.RepositoryContextOperations.Verify_DoesNotAlreadyExist(
+                                        repositoryContext.OwnerName
+                                    ),
                                     Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
                                         async gitHubRepositoryContext =>
                                         {
                                             await gitHubRepositoryContext.Run(
                                                 Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description),
-                                                Instances.GitHubRepositoryContextOperations.Clone_Repository_ProvideContext(
+                                                Instances.GitHubRepositoryContextOperations.Clone_Repository(
                                                     (context, localDirectoryPath) => applicationContext.TextOutput.WriteInformation($"Cloned to local directory: {localDirectoryPath}.")
                                                 )
                                             );
@@ -769,7 +769,7 @@ namespace R5T.L0037.Construction
                             Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
                                 Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist_N001,
                                 Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description),
-                                Instances.GitHubRepositoryContextOperations.Clone_Repository_ProvideContext(
+                                Instances.GitHubRepositoryContextOperations.Clone_Repository(
                                     (context, localDirectoryPath) => applicationContext.TextOutput.WriteInformation($"Cloned to local directory: {localDirectoryPath}."))
                             ),
                             Instances.RepositoryContextOperations.In_LocalGitRepositoryContext(repositoryName, ownerName,
@@ -784,8 +784,13 @@ namespace R5T.L0037.Construction
         public async Task Delete_Repository()
         {
             /// Inputs.
-            var repositoryName = Instances.RepositoryNames.Test;
-            var ownerName = Instances.OwnerNames.SafetyCone;
+            var repositoryName =
+                T0186.Extensions.StringExtensions.ToRepositoryName("R5T.S0069")
+                //Instances.RepositoryNames.Test
+                ;
+            var ownerName =
+                Instances.OwnerNames.SafetyCone
+                ;
 
 
             /// Run.
@@ -822,7 +827,7 @@ namespace R5T.L0037.Construction
                 Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
                     Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist_N001,
                     Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description),
-                    Instances.GitHubRepositoryContextOperations.Clone_Repository_ProvideContext(
+                    Instances.GitHubRepositoryContextOperations.Clone_Repository(
                         (context, localDirectoryPath) => Console.WriteLine(localDirectoryPath))
                 ));
         }

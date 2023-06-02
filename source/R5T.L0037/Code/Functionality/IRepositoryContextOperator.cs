@@ -9,7 +9,8 @@ using R5T.T0184;
 namespace R5T.L0037
 {
     [FunctionalityMarker]
-    public partial interface IRepositoryContextOperator : IFunctionalityMarker
+    public partial interface IRepositoryContextOperator : IFunctionalityMarker,
+        L0042.F000.IRepositoryContextOperator
     {
         public Task In_RepositoryContext(
             IRepositoryName repositoryName,
@@ -23,20 +24,7 @@ namespace R5T.L0037
                     ownerName,
                     textOutput),
                 operations,
-                Instances.RepositoryContextDestructors.Default);
-        }
-
-        public Task In_RepositoryContext(
-            IRepositoryName repositoryName,
-            ITextOutput textOutput,
-            params Func<N001.IRepositoryContext, Task>[] operations)
-        {
-            return Instances.ContextOperator.In_Context(
-                Instances.RepositoryContextConstructors.Default(
-                    repositoryName,
-                    textOutput),
-                operations,
-                Instances.RepositoryContextDestructors.Default);
+                Instances.ActionOperations.DoNothing);
         }
     }
 }

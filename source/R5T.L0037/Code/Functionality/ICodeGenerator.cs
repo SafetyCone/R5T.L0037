@@ -27,7 +27,7 @@ namespace {namespaceName}
     /// <summary>
     /// %%% DESCRIPTION %%%
     /// </summary>
-    [ContextTypeMarker]
+    [ContextDefinitionMarker]
     public interface {interfaceTypeName} : IContextDefinitionMarker
     {{
         
@@ -115,7 +115,7 @@ namespace {namespaceName}
     public class {classTypeName} : TypedBase<{baseTypeName}>, IStrongTypeMarker,
         {interfaceTypeName}
     {{
-        public {classTypeName}(string value)
+        public {classTypeName}({baseTypeName} value)
             : base(value)
         {{
         }}

@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0040\source\R5T.L0040.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0048\source\R5T.L0048.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0040.O001"
+                "R5T.L0048.F000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Code file generation operations from the project operations library."
+                "Roslyn syntax operator functionality library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -767,7 +767,7 @@ namespace R5T.L0037.Construction
                         applicationContext.TextOutput,
                         Instances.RepositoryContextOperations.In_CreateRepositoryContext(
                             Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
-                                Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist_N001,
+                                Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist,
                                 Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description),
                                 Instances.GitHubRepositoryContextOperations.Clone_Repository(
                                     (context, localDirectoryPath) => applicationContext.TextOutput.WriteInformation($"Cloned to local directory: {localDirectoryPath}."))
@@ -785,7 +785,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var repositoryName =
-                T0186.Extensions.StringExtensions.ToRepositoryName("R5T.S0069")
+                T0186.Extensions.StringExtensions.ToRepositoryName("R5T.S0072")
                 //Instances.RepositoryNames.Test
                 ;
             var ownerName =
@@ -825,7 +825,7 @@ namespace R5T.L0037.Construction
                 ownerName,
                 Instances.TextOutputOperator.Get_New_Null(),
                 Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
-                    Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist_N001,
+                    Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist,
                     Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description),
                     Instances.GitHubRepositoryContextOperations.Clone_Repository(
                         (context, localDirectoryPath) => Console.WriteLine(localDirectoryPath))
@@ -863,7 +863,7 @@ namespace R5T.L0037.Construction
                 ownerName,
                 Instances.TextOutputOperator.Get_New_Null(),
                 Instances.RepositoryContextOperations.In_GitHubRepositoryContext(
-                    Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist_N001,
+                    Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist,
                     Instances.GitHubRepositoryContextOperations.Create_RemoteRepository(description)
                 ));
         }

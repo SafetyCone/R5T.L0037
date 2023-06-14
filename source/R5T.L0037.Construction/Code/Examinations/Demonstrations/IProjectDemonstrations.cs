@@ -195,7 +195,7 @@ namespace R5T.L0037.Construction
                 Instances.ProjectFileReferences_Raw.R5T_T0179.Value,
                 // Add function marker attributes for operator. (Included as part of R5T.T0179, but make it explicit.)
                 Instances.ProjectFileReferences_Raw.R5T_T0132.Value
-                );
+            );
 
             Instances.NotepadPlusPlusOperator.Open(
                 outputTextFilePath);
@@ -209,7 +209,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.O0007\source\R5T.O0007\R5T.O0007.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0137\source\R5T.F0137\R5T.F0137.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
@@ -219,7 +219,9 @@ namespace R5T.L0037.Construction
                     //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0133\source\R5T.F0133\R5T.F0133.csproj"
                     //.ToProjectFileReference(),
                     Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
-                    //Instances.ProjectFileReferences_Raw.R5T_T0137,
+                    //Instances.ProjectFileReferences.For_SolutionSpecifications
+                    //Instances.ProjectFileReferences.For_RemoteRepositoryContext
+                    //Instances.ProjectFileReferences_Raw.R5T_L0036
                 }
                 ;
             // True, to update the recursive project references of all solutions containg the specified project.

@@ -28,11 +28,11 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.T000\R5T.L0039.T000.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.O0016\source\R5T.O0016\R5T.O0016.csproj"
                 .ToProjectFilePath()
                 ;
             var contextTypeNameStem =
-                "SolutionDirectoryContext"
+                "RepositoryContext"
                 .ToTypeNameStem()
                 ;
 
@@ -93,13 +93,13 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0181\source\R5T.T0181\R5T.T0181.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0032\source\R5T.L0032.T000\R5T.L0032.T000.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "RazorFilePath",
+                    "SupportedPlatform",
                 }
                 .ToTypeNameStems()
                 ;
@@ -209,7 +209,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0137\source\R5T.F0137\R5T.F0137.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0081\source\R5T.S0081\R5T.S0081.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
@@ -218,10 +218,13 @@ namespace R5T.L0037.Construction
                 {
                     //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0133\source\R5T.F0133\R5T.F0133.csproj"
                     //.ToProjectFileReference(),
-                    Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
+                    //Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
+                    //Instances.ProjectFileReferences.For_NET_Standard_2_1_FoundationLibrary
+                    //Instances.ProjectFileReferences.For_RoslynNuGetPackageSelector
                     //Instances.ProjectFileReferences.For_SolutionSpecifications
                     //Instances.ProjectFileReferences.For_RemoteRepositoryContext
-                    //Instances.ProjectFileReferences_Raw.R5T_L0036
+                    Instances.ProjectFileReferences_Raw.R5T_O0026,
+                    Instances.ProjectFileReferences_Raw.R5T_Z0046
                 }
                 ;
             // True, to update the recursive project references of all solutions containg the specified project.

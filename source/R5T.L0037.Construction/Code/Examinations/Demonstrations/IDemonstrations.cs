@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0048\source\R5T.L0048.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0048.F000"
+                "R5T.L0039.O002"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Roslyn syntax operator functionality library."
+                "Solution context constructors library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

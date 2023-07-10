@@ -93,27 +93,30 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0032\source\R5T.L0032.T000\R5T.L0032.T000.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0218\source\R5T.T0218\R5T.T0218.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "SupportedPlatform",
+                    "TargetFrameworkMoniker"
                 }
                 .ToTypeNameStems()
                 ;
-            var baseTypeName =
+            var baseTypeName_Unchecked =
                 "string"
                 .ToSimpleTypeName()
                 ;
-
+            var baseTypeName =
+                baseTypeName_Unchecked.Value
+                //Instances.TypeNameOperator.Ensure_IsCapitalized(baseTypeName_Unchecked.Value)
+                .ToSimpleTypeName();
 
             /// Run.
             var namespaceName = Instances.ProjectNamespaceNamesOperator.Get_DefaultProjectNamespaceName(projectFilePath);
 
-            var stringOperatorMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
-            var stringExtensionMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
+            var operatorMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
+            var extensionMethodsByTypeNameStem = new Dictionary<ITypeNameStem, ICode>();
 
             void ProcessStrongTypeTypeNameStem(ITypeNameStem strongTypeTypeNameStem)
             {
@@ -141,21 +144,21 @@ namespace R5T.L0037.Construction
                     baseTypeName,
                     FileExistsBehavior.Skip);
 
-                var stringOperatorCode = Instances.CodeGenerator.Get_StrongType_StringOperator_ToXMethod(
+                var operatorCode = Instances.CodeGenerator.Get_StrongType_Operator_ToXMethod(
                     strongTypeTypeNameStem,
                     baseTypeName);
 
-                stringOperatorMethodsByTypeNameStem.Add(
+                operatorMethodsByTypeNameStem.Add(
                     strongTypeTypeNameStem,
-                    stringOperatorCode);
+                    operatorCode);
 
-                var stringExtensionsCode = Instances.CodeGenerator.Get_StrongType_StringExtensions_ToXMethod(
+                var extensionsCode = Instances.CodeGenerator.Get_StrongType_Extensions_ToXMethod(
                     strongTypeTypeNameStem,
                     baseTypeName);
 
-                stringExtensionMethodsByTypeNameStem.Add(
+                extensionMethodsByTypeNameStem.Add(
                     strongTypeTypeNameStem,
-                    stringExtensionsCode);
+                    extensionsCode);
             }
 
             var distinct = strongTypeTypeNameStems
@@ -171,11 +174,11 @@ namespace R5T.L0037.Construction
             // Create a text file containing the ToX() methods.
             var outputTextFilePath = Instances.FilePaths.OutputTextFilePath;
 
-            var lines = stringOperatorMethodsByTypeNameStem
+            var lines = operatorMethodsByTypeNameStem
                 .OrderAlphabetically(x => x.Key.Value)
                 .Select(x => x.Value.Value)
                 .Append(
-                    stringExtensionMethodsByTypeNameStem
+                    extensionMethodsByTypeNameStem
                         .OrderAlphabetically(x => x.Key.Value)
                         .Select(x => x.Value.Value)
                 )
@@ -209,22 +212,22 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0081\source\R5T.S0081\R5T.S0081.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0083\source\R5T.S0083\R5T.S0083.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
                 //Instances.ProjectFileReferenceSets.For_ContextTypeDefinitionLibrary
                 new[]
                 {
-                    //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0133\source\R5T.F0133\R5T.F0133.csproj"
+                    //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0214\source\R5T.T0214\R5T.T0214.csproj"
                     //.ToProjectFileReference(),
-                    //Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
+                    Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
                     //Instances.ProjectFileReferences.For_NET_Standard_2_1_FoundationLibrary
                     //Instances.ProjectFileReferences.For_RoslynNuGetPackageSelector
                     //Instances.ProjectFileReferences.For_SolutionSpecifications
                     //Instances.ProjectFileReferences.For_RemoteRepositoryContext
-                    Instances.ProjectFileReferences_Raw.R5T_O0026,
-                    Instances.ProjectFileReferences_Raw.R5T_Z0046
+                    //Instances.ProjectFileReferences_Raw.R5T_O0026,
+                    //Instances.ProjectFileReferences_Raw.R5T_Z0046
                 }
                 ;
             // True, to update the recursive project references of all solutions containg the specified project.

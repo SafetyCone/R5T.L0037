@@ -3,6 +3,7 @@ using System;
 using R5T.F0131.Extensions;
 using R5T.T0132;
 using R5T.T0161;
+using R5T.T0161.Extensions;
 using R5T.T0193;
 
 
@@ -126,7 +127,7 @@ namespace {namespaceName}
             return output;
         }
 
-        public ICode Get_StrongType_StringOperator_ToXMethod(
+        public ICode Get_StrongType_Operator_ToXMethod(
             IInterfaceTypeName interfaceTypeName,
             IClassTypeName classTypeName,
             ISimpleTypeName baseTypeName)
@@ -144,44 +145,46 @@ public {interfaceTypeName} To{classTypeName}({baseTypeName} value)
             return output;
         }
 
-        public ICode Get_StrongType_StringOperator_ToXMethod(
+        public ICode Get_StrongType_Operator_ToXMethod(
             ITypeNameStem strongTypeNameStem,
             ISimpleTypeName baseTypeName)
         {
             var classTypeName = Instances.TypeNameOperator.Get_ClassTypeName(strongTypeNameStem);
             var interfaceTypeName = Instances.TypeNameOperator.Get_InterfaceTypeName(strongTypeNameStem);
 
-            return this.Get_StrongType_StringOperator_ToXMethod(
+            return this.Get_StrongType_Operator_ToXMethod(
                 interfaceTypeName,
                 classTypeName,
                 baseTypeName);
         }
 
-        public ICode Get_StrongType_StringExtensions_ToXMethod(
+        public ICode Get_StrongType_Extensions_ToXMethod(
             IInterfaceTypeName interfaceTypeName,
             IClassTypeName classTypeName,
             ISimpleTypeName baseTypeName)
         {
+            var capitalizedBaseTypeName = Instances.TypeNameOperator.Ensure_IsCapitalized(baseTypeName.Value);
+
             var output =
 $@"
-/// <inheritdoc cref=""IStringOperator.To{classTypeName}(string)""/>
+/// <inheritdoc cref=""I{capitalizedBaseTypeName}Operator.To{classTypeName}({baseTypeName})""/>
 public static {interfaceTypeName} To{classTypeName}(this {baseTypeName} value)
 {{
-    return Instances.StringOperator_Extensions.To{classTypeName}(value);
+    return Instances.{capitalizedBaseTypeName}Operator_Extensions.To{classTypeName}(value);
 }}
 ".ToCode();
 
             return output;
         }
 
-        public ICode Get_StrongType_StringExtensions_ToXMethod(
+        public ICode Get_StrongType_Extensions_ToXMethod(
             ITypeNameStem strongTypeNameStem,
             ISimpleTypeName baseTypeName)
         {
             var classTypeName = Instances.TypeNameOperator.Get_ClassTypeName(strongTypeNameStem);
             var interfaceTypeName = Instances.TypeNameOperator.Get_InterfaceTypeName(strongTypeNameStem);
 
-            return this.Get_StrongType_StringExtensions_ToXMethod(
+            return this.Get_StrongType_Extensions_ToXMethod(
                 interfaceTypeName,
                 classTypeName,
                 baseTypeName);

@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0039\source\R5T.L0039.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0216\source\R5T.T0216.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0039.O002"
+                "R5T.T0216.F001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Solution context constructors library."
+                "Path-related functionality for common special directory path strong types."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -320,12 +320,14 @@ namespace R5T.L0037.Construction
             async Task ApplicationContextOperation(
                 IApplicationContext applicationContext)
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 await Instances.LocalRepositoryContextOperator.In_LocalRepositoryContext(
                     repositoryName,
                     repositoryDirectoryPath,
                     applicationContext.TextOutput,
                     repositoryContext => LocalRepositoryContextOperation(
                         repositoryContext));
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
             async Task LocalRepositoryContextOperation(

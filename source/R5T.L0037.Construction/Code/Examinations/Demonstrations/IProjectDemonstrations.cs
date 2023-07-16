@@ -93,18 +93,18 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0218\source\R5T.T0218\R5T.T0218.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0219\source\R5T.T0219\R5T.T0219.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "TargetFrameworkMoniker"
+                    "DotnetMajorVersion"
                 }
                 .ToTypeNameStems()
                 ;
             var baseTypeName_Unchecked =
-                "string"
+                "int"
                 .ToSimpleTypeName()
                 ;
             var baseTypeName =

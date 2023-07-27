@@ -93,18 +93,18 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0219\source\R5T.T0219\R5T.T0219.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0181\source\R5T.T0181\R5T.T0181.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "DotnetMajorVersion"
+                    "JsonFileName",
                 }
                 .ToTypeNameStems()
                 ;
             var baseTypeName_Unchecked =
-                "int"
+                "string"
                 .ToSimpleTypeName()
                 ;
             var baseTypeName =
@@ -212,7 +212,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0083\source\R5T.S0083\R5T.S0083.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0142\source\R5T.F0142\R5T.F0142.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
@@ -221,13 +221,14 @@ namespace R5T.L0037.Construction
                 {
                     //@"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0214\source\R5T.T0214\R5T.T0214.csproj"
                     //.ToProjectFileReference(),
-                    Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
+                    //Instances.ProjectFileReferences.For_NET_6_FoundationLibrary,
                     //Instances.ProjectFileReferences.For_NET_Standard_2_1_FoundationLibrary
                     //Instances.ProjectFileReferences.For_RoslynNuGetPackageSelector
                     //Instances.ProjectFileReferences.For_SolutionSpecifications
                     //Instances.ProjectFileReferences.For_RemoteRepositoryContext
+                    Instances.ProjectFileReferences.For_RepositoryNameStrongType
                     //Instances.ProjectFileReferences_Raw.R5T_O0026,
-                    //Instances.ProjectFileReferences_Raw.R5T_Z0046
+                    //Instances.ProjectFileReferences_Raw.R5T_T0200,
                 }
                 ;
             // True, to update the recursive project references of all solutions containg the specified project.

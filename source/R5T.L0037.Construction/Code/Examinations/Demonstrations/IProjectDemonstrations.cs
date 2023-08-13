@@ -93,13 +93,14 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0181\source\R5T.T0181\R5T.T0181.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0102\source\R5T.S0102\R5T.S0102.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "JsonFileName",
+                    "PropertyNamed",
+                    "PropertyName",
                 }
                 .ToTypeNameStems()
                 ;
@@ -212,7 +213,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0142\source\R5T.F0142\R5T.F0142.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0030\source\R5T.Z0030.Z001\R5T.Z0030.Z001.csproj"
                 .ToProjectFilePath()
                 ;
             var projectFileReferences =
@@ -226,7 +227,8 @@ namespace R5T.L0037.Construction
                     //Instances.ProjectFileReferences.For_RoslynNuGetPackageSelector
                     //Instances.ProjectFileReferences.For_SolutionSpecifications
                     //Instances.ProjectFileReferences.For_RemoteRepositoryContext
-                    Instances.ProjectFileReferences.For_RepositoryNameStrongType
+                    //Instances.ProjectFileReferences.For_TextOutputConsole
+                    Instances.ProjectFileReferences.For_CloudAndSharedPaths
                     //Instances.ProjectFileReferences_Raw.R5T_O0026,
                     //Instances.ProjectFileReferences_Raw.R5T_T0200,
                 }

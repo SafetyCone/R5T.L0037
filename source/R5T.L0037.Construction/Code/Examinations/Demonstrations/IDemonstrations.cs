@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0143\source\R5T.F0143.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0030\source\R5T.Z0030.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.F0143.F001"
+                "R5T.Z0030.Z001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Repository owner name related organization operators."
+                "Example identity name values provided from dotnet pack and Rivet project files."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -265,7 +265,6 @@ namespace R5T.L0037.Construction
             {
                 return projectContext.Run(
                     Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
-                projectName,
                         projectDescription),
                     Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),
@@ -414,7 +413,6 @@ namespace R5T.L0037.Construction
             {
                 return projectContext.Run(
                     Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
-                projectName,
                         projectDescription),
                     Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),
@@ -601,7 +599,6 @@ namespace R5T.L0037.Construction
             {
                 return projectContext.Run(
                     Instances.ProjectContextOperations_FileGeneration.Create_ProjectPlanFile(
-                        projectName,
                         projectDescription),
                     Instances.ProjectContextOperations_FileGeneration.Create_InstancesFile(
                         projectNamespaceName),

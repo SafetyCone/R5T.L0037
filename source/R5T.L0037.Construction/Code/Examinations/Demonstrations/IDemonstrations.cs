@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0030\source\R5T.Z0030.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0046\source\R5T.Z0046.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.Z0030.Z001"
+                "R5T.Z0046.Platform"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Example identity name values provided from dotnet pack and Rivet project files."
+                "Platform library for example values library (netstandard2.1)."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

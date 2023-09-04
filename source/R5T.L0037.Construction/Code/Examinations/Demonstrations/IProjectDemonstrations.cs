@@ -93,14 +93,14 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0102\source\R5T.S0102\R5T.S0102.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0213\source\R5T.T0213\R5T.T0213.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "PropertyNamed",
-                    "PropertyName",
+                    "FullAssemblyName",
+                    "ShortAssemblyName",
                 }
                 .ToTypeNameStems()
                 ;

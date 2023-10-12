@@ -93,19 +93,18 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var projectFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0199\source\R5T.T0199\R5T.T0199.csproj"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0063\source\R5T.L0063.F000\R5T.L0063.F000.csproj"
                 .ToProjectFilePath()
                 ;
             var strongTypeTypeNameStems =
                 new[]
                 {
-                    "RuntimeDirectoryPath",
-                    "DotnetRuntimeDirectoryPath",
+                    "ListItemTokenSeparatorSeparatedTokens",
                 }
                 .ToTypeNameStems()
                 ;
             var baseTypeName_Unchecked =
-                "string"
+                "string[]"
                 .ToSimpleTypeName()
                 ;
             var baseTypeName =

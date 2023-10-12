@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0057\source\R5T.Z0057.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0065\source\R5T.L0065.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.Z0057.Platform"
+                "R5T.L0065.F004"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Platform library for target framework moniker values."
+                "Signature string parsing to signature type functionality."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -784,7 +784,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var repositoryName =
-                T0186.Extensions.StringExtensions.ToRepositoryName("R5T.S0072")
+                T0186.Extensions.StringExtensions.ToRepositoryName("R5T.F0144")
                 //Instances.RepositoryNames.Test
                 ;
             var ownerName =

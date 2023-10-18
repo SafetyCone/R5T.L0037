@@ -288,8 +288,8 @@ namespace R5T.L0037.Construction
                 }
             }
 
-            Instances.WindowsExplorerOperator.OpenDirectoryInExplorer(
-                projectDirectoryPath.Value);
+            Instances.WindowsExplorerOperator.Open(
+                projectDirectoryPath);
         }
 
         /// <summary>
@@ -741,8 +741,10 @@ namespace R5T.L0037.Construction
             Instances.VisualStudioOperator.OpenSolutionFile(
                 consoleRepositoryCreationOutput.SolutionFilePath.Value);
 
-            Instances.WindowsExplorerOperator.OpenDirectoryInExplorer(
-                consoleRepositoryCreationOutput.SolutionFilePath.Get_DirectoryPath().Value);
+            var solutionDirectoryPath = consoleRepositoryCreationOutput.SolutionFilePath.Get_DirectoryPath();
+            
+            Instances.WindowsExplorerOperator.Open(
+                solutionDirectoryPath);
 
             Instances.NotepadPlusPlusOperator.Open(humanOutputTextFilePath);
         }

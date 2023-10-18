@@ -18,11 +18,11 @@ namespace R5T.L0037.Construction
             //await Demonstrations.Instance.Create_Repository_Console_Chunked();
             //await Demonstrations.Instance.Create_Project_InDirectory();
             //await Demonstrations.Instance.Create_Project_InSolution_InDirectory();
-            await Demonstrations.Instance.Add_LibraryProject_ToSolution();
+            //await Demonstrations.Instance.Add_LibraryProject_ToSolution();
 
             //await ProjectDemonstrations.Instance.Add_ProjectFileReferences();
             //await ProjectDemonstrations.Instance.Add_ContextType();
-            //await ProjectDemonstrations.Instance.Add_StrongTypes();
+            await ProjectDemonstrations.Instance.Add_StrongTypes();
         }
     }
 }

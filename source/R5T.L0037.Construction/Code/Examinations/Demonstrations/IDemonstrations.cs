@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0065\source\R5T.L0065.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0070\source\R5T.L0070.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0065.F004"
+                "R5T.L0070.F001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Signature string parsing to signature type functionality."
+                "MemberDocumentation instance generation from .NET XML documentation file functionality library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

@@ -8,7 +8,7 @@ namespace R5T.L0037
 {
     [DataTypeMarker]
     public interface IHasLibraryProjectFilePath :
-        IHasProjectFilePath
+        IWithProjectFilePath
     {
         public IProjectFilePath LibraryProjectFilePath { get; set; }
     }

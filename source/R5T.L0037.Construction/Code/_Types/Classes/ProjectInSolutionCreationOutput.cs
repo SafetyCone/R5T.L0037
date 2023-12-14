@@ -8,7 +8,7 @@ namespace R5T.L0037.Construction
 {
     [DataTypeMarker]
     public class ProjectInSolutionCreationOutput :
-        IHasProjectFilePath,
+        IWithProjectFilePath,
         IHasSolutionFilePath
     {
         public IProjectFilePath ProjectFilePath { get; set; }

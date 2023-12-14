@@ -17,6 +17,10 @@ namespace R5T.L0037.Construction
         IProjectFilePath IHasProjectFilePath.ProjectFilePath
         {
             get => this.LibraryProjectFilePath;
+        }
+
+        IProjectFilePath IWithProjectFilePath.ProjectFilePath
+        {
             set
             {
                 this.LibraryProjectFilePath = value;

@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0032\source\R5T.L0032.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0073\source\R5T.L0073.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0032.F003"
+                "R5T.L0073.Z002"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Utility functionality for Visual Studio project file values."
+                "ASP.NET syntax element values."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

@@ -19,7 +19,7 @@ namespace R5T.L0037.Internal
     {
         public Task Create_SolutionFile(ISolutionContext solutionContext)
         {
-            var solutionFileName = Instances.SolutionFileNameOperator.GetSolutionFileName_FromSolutionName(
+            var solutionFileName = Instances.SolutionFileNameOperator.Get_SolutionFileName_FromSolutionName(
                 solutionContext.SolutionName.Value);
 
             var solutionFilePath = Instances.PathOperator.Combine(

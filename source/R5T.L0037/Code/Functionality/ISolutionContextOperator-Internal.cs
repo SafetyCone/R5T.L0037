@@ -26,7 +26,7 @@ namespace R5T.L0037.Internal
                 solutionContext.DirectoryPath.Value,
                 solutionFileName);
 
-            Instances.SolutionFileGenerator.Create_New(
+            Instances.SolutionFileGenerator.New_Synchronous(
                 solutionFilePath);
 
             return Task.CompletedTask;

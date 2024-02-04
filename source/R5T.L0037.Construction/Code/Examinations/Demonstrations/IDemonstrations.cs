@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0092\source\R5T.L0092.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0067\source\R5T.Z0067.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0092.V000"
+                "R5T.Z0067.Z001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Test fixtures and test articles for R5T.L0066 operators."
+                "General, Rivet-convention, project directory relative paths."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();
@@ -175,7 +175,7 @@ namespace R5T.L0037.Construction
             }
 
 
-            Instances.VisualStudioOperator.OpenSolutionFile(
+            Instances.VisualStudioOperator.Open_SolutionFile(
                 projectInSolutionCreationOutput.SolutionFilePath.Value);
 
             Instances.NotepadPlusPlusOperator.Open(
@@ -436,7 +436,7 @@ namespace R5T.L0037.Construction
                 }
             }
 
-            Instances.VisualStudioOperator.OpenSolutionFile(
+            Instances.VisualStudioOperator.Open_SolutionFile(
                 libraryRepositoryCreationOutput.SolutionFilePath.Value);
 
             Instances.NotepadPlusPlusOperator.Open(
@@ -622,7 +622,7 @@ namespace R5T.L0037.Construction
                 }
             }
 
-            Instances.VisualStudioOperator.OpenSolutionFile(
+            Instances.VisualStudioOperator.Open_SolutionFile(
                 consoleRepositoryCreationOutput.SolutionFilePath.Value);
 
             Instances.NotepadPlusPlusOperator.Open(
@@ -738,7 +738,7 @@ namespace R5T.L0037.Construction
                 }
             );
 
-            Instances.VisualStudioOperator.OpenSolutionFile(
+            Instances.VisualStudioOperator.Open_SolutionFile(
                 consoleRepositoryCreationOutput.SolutionFilePath.Value);
 
             var solutionDirectoryPath = consoleRepositoryCreationOutput.SolutionFilePath.Get_DirectoryPath();

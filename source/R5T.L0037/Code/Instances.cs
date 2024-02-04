@@ -17,7 +17,7 @@ namespace R5T.L0037
         public static F0000.IFileSystemOperator FileSystemOperator => F0000.FileSystemOperator.Instance;
         public static F0041.IGitHubOperator GitHubOperator => F0041.GitHubOperator.Instance;
         public static L0036.IGitHubRepositoryContextOperator GitHubRepositoryContextOperator => L0036.GitHubRepositoryContextOperator.Instance;
-        public static F0019.IGitOperator GitOperator => F0019.GitOperator.Instance;
+        public static L0083.F001.IGitOperator GitOperator => L0083.F001.GitOperator.Instance;
         public static L0047.F000.ILocalGitRepositoryContextOperator LocalGitRepositoryContextOperator => L0047.F000.LocalGitRepositoryContextOperator.Instance;
         public static F0042.ILocalRepositoryOperator LocalRepositoryOperator => F0042.LocalRepositoryOperator.Instance;
         public static F0059.ILoggingOperator LoggingOperator => F0059.LoggingOperator.Instance;

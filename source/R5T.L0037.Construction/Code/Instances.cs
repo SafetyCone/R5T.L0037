@@ -18,7 +18,7 @@ namespace R5T.L0037.Construction
         public static F0000.IFileOperator FileOperator => F0000.FileOperator.Instance;
         public static Z0015.IFilePaths FilePaths => Z0015.FilePaths.Instance;
         public static F0000.IFileSystemOperator FileSystemOperator => F0000.FileSystemOperator.Instance;
-        public static F0019.IGitOperator GitOperator => F0019.GitOperator.Instance;
+        public static L0083.F001.IGitOperator GitOperator => L0083.F001.GitOperator.Instance;
         public static F0041.IGitHubOperator GitHubOperator => F0041.GitHubOperator.Instance;
         public static L0036.IGitHubRepositoryContextOperations GitHubRepositoryContextOperations => L0036.GitHubRepositoryContextOperations.Instance;
         public static L0047.O001.ILocalGitRepositoryContextOperations LocalGitRepositoryContextOperations => L0047.O001.LocalGitRepositoryContextOperations.Instance;

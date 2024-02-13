@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0067\source\R5T.Z0067.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0083\source\R5T.F0083.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.Z0067.Z001"
+                "R5T.F0083.O001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "General, Rivet-convention, project directory relative paths."
+                "Code file generation context operations using Razor components."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

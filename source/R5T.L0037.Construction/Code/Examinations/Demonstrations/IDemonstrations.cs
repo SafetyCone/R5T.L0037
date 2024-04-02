@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0080\source\R5T.L0080.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0098\source\R5T.L0098.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0080.F002"
+                "R5T.L0098.L002"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Repository operator context functionality (unspecified context type)."
+                "A .NET 8.0 sub-library of examples."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

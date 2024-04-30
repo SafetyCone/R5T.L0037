@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0098\source\R5T.L0098.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.W0008.Private\source\R5T.W0008.Private.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0098.L002"
+                "R5T.W0008.L000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "A .NET 8.0 sub-library of examples."
+                "Shared library for client and server."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

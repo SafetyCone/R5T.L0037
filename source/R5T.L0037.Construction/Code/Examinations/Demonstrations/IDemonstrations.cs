@@ -31,15 +31,15 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.W0008.Private\source\R5T.W0008.Private.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0101.Private\source\R5T.L0101.Construction.Private.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.W0008.L000"
+                "R5T.L0101.Z002"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Shared library for client and server."
+                "System-typed, absolutely named (raw), fundamental and derived, values for the R5T.L0101 private official selections library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

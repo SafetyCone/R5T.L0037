@@ -31,15 +31,19 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.L0101.Private\source\R5T.L0101.Construction.Private.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0082\source\R5T.F0082.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.L0101.Z002"
+                "R5T.F0082.F000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "System-typed, absolutely named (raw), fundamental and derived, values for the R5T.L0101 private official selections library."
+                //"System-typed, absolutely named (raw), fundamental (with derived allowed), values for the R5T.Z0063 all- or undetermined-opinion values library."
+                //"Leaf strong-typed, absolutely named (raw), fundamental (for the strong-type, derived for the underlying type, but dervied for the strong-type is allowed), values for the R5T.Z0063 output directory path and output file path values library."
+                //"System-typed, contextually named (refined), derived (with fundamental allowed), values for the R5T.Z0070 values catch-all library."
+                //"Leaf strong-typed, contextually named (refined), derived (with fundamental allowed) values for the R5T.Z0063 output directory path and output file path values library."
+                "System-typed code file-system survey functionality for the R5T.F0082 project."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

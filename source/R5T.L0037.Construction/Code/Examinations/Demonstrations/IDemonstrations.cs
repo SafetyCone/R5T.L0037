@@ -31,11 +31,11 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0082\source\R5T.F0082.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0002.Private\source\D8S.S0002.Private.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "R5T.F0082.F000"
+                "D8S.S0002.L000"
                 .ToProjectName()
                 ;
             var projectDescription =
@@ -43,7 +43,8 @@ namespace R5T.L0037.Construction
                 //"Leaf strong-typed, absolutely named (raw), fundamental (for the strong-type, derived for the underlying type, but dervied for the strong-type is allowed), values for the R5T.Z0063 output directory path and output file path values library."
                 //"System-typed, contextually named (refined), derived (with fundamental allowed), values for the R5T.Z0070 values catch-all library."
                 //"Leaf strong-typed, contextually named (refined), derived (with fundamental allowed) values for the R5T.Z0063 output directory path and output file path values library."
-                "System-typed code file-system survey functionality for the R5T.F0082 project."
+                //"Server-side Razor Components catch-all library project for the D8S.W0006 personal, internal, tech blog project."
+                "Library for the D8S.S0002 birthdays email script project."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

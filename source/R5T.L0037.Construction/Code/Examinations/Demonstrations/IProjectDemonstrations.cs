@@ -168,7 +168,7 @@ namespace R5T.L0037.Construction
 
             var distinct = strongTypeTypeNameStems
                 .Distinct()
-                .OrderAlphabetically(x => x.Value)
+                .OrderAlphabeticallyBy(x => x.Value)
                 .Now();
 
             foreach (var strongTypeTypeNameStem in distinct)
@@ -180,11 +180,11 @@ namespace R5T.L0037.Construction
             var outputTextFilePath = Instances.FilePaths.OutputTextFilePath;
 
             var lines = operatorMethodsByTypeNameStem
-                .OrderAlphabetically(x => x.Key.Value)
+                .OrderAlphabeticallyBy(x => x.Key.Value)
                 .Select(x => x.Value.Value)
                 .Append(
                     extensionMethodsByTypeNameStem
-                        .OrderAlphabetically(x => x.Key.Value)
+                        .OrderAlphabeticallyBy(x => x.Key.Value)
                         .Select(x => x.Value.Value)
                 )
                 .MakeIntoLines()

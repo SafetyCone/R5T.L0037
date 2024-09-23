@@ -35,7 +35,7 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "D8S.Z0009.T001"
+                "D8S.Z0009.T003"
                 .ToProjectName()
                 ;
             var projectDescription =
@@ -44,7 +44,7 @@ namespace R5T.L0037.Construction
                 //"System-typed, contextually named (refined), derived (with fundamental allowed), values for the R5T.Z0070 values catch-all library."
                 //"Leaf strong-typed, contextually named (refined), derived (with fundamental allowed) values for the R5T.Z0063 output directory path and output file path values library."
                 //"Server-side Razor Components catch-all library project for the D8S.W0006 personal, internal, tech blog project."
-                "Member implementations for example identity strings from MS Docs."
+                "Library containing type for an example documentation XML file."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

@@ -31,11 +31,11 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0000.Private\source\D8S.S0000.Private.sln"
+                @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0254.Private\source\R5T.T0254.Private.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "D8S.S0000.E000"
+                "R5T.T0254.T000"
                 .ToProjectName()
                 ;
             var projectDescription =
@@ -44,7 +44,7 @@ namespace R5T.L0037.Construction
                 //"System-typed, contextually named (refined), derived (with fundamental allowed), values for the R5T.Z0070 values catch-all library."
                 //"Leaf strong-typed, contextually named (refined), derived (with fundamental allowed) values for the R5T.Z0063 output directory path and output file path values library."
                 //"Server-side Razor Components catch-all library project for the D8S.W0006 personal, internal, tech blog project."
-                "Experiemental library project."
+                "IHasX/IWithX catch-all types library, netstandard2.1, limited dependencies, leaf (within R5T.T0254), private."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

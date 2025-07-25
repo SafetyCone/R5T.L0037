@@ -31,20 +31,47 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0000.Private\source\D8S.S0000.Private.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0001\source\F10Y.L0001.Construction.sln"
+                //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
+                //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
+                //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
+                //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "D8S.S0000.Z001"
+                //"D8S.Z0010.Z002"
+                "F10Y.L0001.L003"
                 .ToProjectName()
                 ;
             var projectDescription =
+                "Text representations library for the F10Y.L0001 Functionairy-opinioned, but generally applicable, .NET Standard 2.1 foundation library."
+                //"Script infrastructure implementation types."
+                //"Low-dependency examinations (explorations, experiments, and demonstrations) library for the F10Y.L0000 netstandard2.1 foundation library project."
+                //"Test article and test fixture definitions for the F10Y.L0000.V000 testing project."
+                //"System path demonstrations."
+                //"Path and path part values."
                 //"System-typed, absolutely named (raw), fundamental (with derived allowed), values for the R5T.Z0063 all- or undetermined-opinion values library."
                 //"Leaf strong-typed, absolutely named (raw), fundamental (for the strong-type, derived for the underlying type, but dervied for the strong-type is allowed), values for the R5T.Z0063 output directory path and output file path values library."
                 //"System-typed, contextually named (refined), derived (with fundamental allowed), values for the R5T.Z0070 values catch-all library."
                 //"Leaf strong-typed, contextually named (refined), derived (with fundamental allowed) values for the R5T.Z0063 output directory path and output file path values library."
                 //"Server-side Razor Components catch-all library project for the D8S.W0006 personal, internal, tech blog project."
-                "Primary netstandard2.1 values leaf project for the D8S.S0000 primary project."
+                //"Files-convention functionality sub-library for the F10Y.L0001 Functionairy-opinioned .NET Standard 2.1 foundation library."
+                //"Files-convention example files sub-library for the F10Y.Z0000 example values library."
+                //"Explorations sub-library for the F10Y.L0025 LibGit2Sharp-based GitOperator library."
+                //"netstandard2.1 version sub-library for the F10Y.Q0000 general C#/.NET framework examinations project."
+                //"Support library for the D8S.S0015 personal, private, entry-point executable project."
+                //"Instance set descriptor library for the F10Y.L0026 instance set machinery library."
+                //"IHasX/IWithX types library for the F10Y.L0062 .NET 6.0 platform library."
+                //"Common (non-leaf) library for the F10Y.L0026 instance set machinery library."
+                ////"A results library."
+                //"Library for the Has<T> return type."
+                //"System-integrated extensions library for the F10Y.L0001 Functionairy-opinioned but generally applicable .NET Standard 2.1 foundation library."
+                //"Default library for the F10Y.L0001 Functionairy-opinioned but generally applicable .NET Standard 2.1 foundation library."
+                //"Descriptor values for the F10Y.L0062.L002 descriptors library."
+                //"Functionairy-applicable instance set descriptor facet search descriptor values library."
+                //"Instance set search descriptor values aggregation library for the D8S.Z0010 instance set, flow, and search descriptor values project"
+                //"Zero-dependencies values library for the F10Y.L0008 .NET infrastructure library. (Functionairy-opinioned, but generally applicable)"
+                //"Types library for the descriptor search library."
                 .ToProjectDescription()
                 ;
             var repositoryUrl = new IsSet<IRepositoryUrl>();

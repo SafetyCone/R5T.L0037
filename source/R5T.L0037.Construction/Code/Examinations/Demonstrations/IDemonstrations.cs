@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0001\source\F10Y.L0001.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.T0014\source\F10Y.T0014.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -40,11 +40,13 @@ namespace R5T.L0037.Construction
                 ;
             var projectName =
                 //"D8S.Z0010.Z002"
-                "F10Y.L0001.L003"
+                "F10Y.T0014.T003"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Text representations library for the F10Y.L0001 Functionairy-opinioned, but generally applicable, .NET Standard 2.1 foundation library."
+                "Script infrastructure implementation types, including clipboard copy."
+                //"Demonstrations library for the F10Y.L0030 signature, signature string, and identity string library."
+                //"Text representations library for the F10Y.L0001 Functionairy-opinioned, but generally applicable, .NET Standard 2.1 foundation library."
                 //"Script infrastructure implementation types."
                 //"Low-dependency examinations (explorations, experiments, and demonstrations) library for the F10Y.L0000 netstandard2.1 foundation library project."
                 //"Test article and test fixture definitions for the F10Y.L0000.V000 testing project."

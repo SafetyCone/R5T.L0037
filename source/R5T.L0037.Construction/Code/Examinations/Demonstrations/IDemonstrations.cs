@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.T0014\source\F10Y.T0014.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.T0018\source\F10Y.T0018.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -40,11 +40,14 @@ namespace R5T.L0037.Construction
                 ;
             var projectName =
                 //"D8S.Z0010.Z002"
-                "F10Y.T0014.T003"
+                "F10Y.T0018.T000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Script infrastructure implementation types, including clipboard copy."
+                "Unopinionated, generally-applicable overload types for the F10Y.T0018 library."
+                //"A netstandard2.1-specific library for the F10Y.L0033 Quartz.NET scheduler library."
+                //"Basic types library for the F10Y.L0005 .NET Standard 2.1 platform library."
+                //"Script infrastructure implementation types, including clipboard copy."
                 //"Demonstrations library for the F10Y.L0030 signature, signature string, and identity string library."
                 //"Text representations library for the F10Y.L0001 Functionairy-opinioned, but generally applicable, .NET Standard 2.1 foundation library."
                 //"Script infrastructure implementation types."

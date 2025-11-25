@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.T0014\source\F10Y.T0014.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0015.Private\source\D8S.S0015.Private.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -39,12 +39,29 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                //"D8S.Z0010.Z002"
-                "F10Y.T0014.T004"
+                "D8S.S0015.R000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Cross-platform (Windows and MacOS) script infrastructure implementation types library."
+                "Razor components library for the D8S.S0015 project. (unconstrained dependencies)"
+                //"Default library for the F10Y.L0061 Functionairy-opinioned but generally applicable .NET 6.0 foundation library."
+                //"Leaf, limited dependencies, netstandard2.1 library for the D8S.S0015 personal, private, entry-point executable."
+                //"Entity types for the D8S.S0015.H001 personal, private, entry-point executable database library."
+                //"Database library for the D8S.S0015 personal, private, entry-point executable."
+                //"Descriptor interface types for the F10Y.L0026 library."
+                //"Library for the F10Y.S0001 instances survey script."
+                //"Static HTML (non-dynamic, static), leaf, Razor components catch-all library."
+                //"Dependency-constrained, netstandard2.1 extensions for D8S.L0020.D000 service definitions."
+                //"Dependency-constrained, net8.0, leaf within D8S.L0020, service definitions for the D8S.L0020 personal, private, catch-all library."
+                //"A zero-dependency IHasX/IWithX types library for the F10Y.L0005 .NET Standard 2.1 platform library."
+                //"Dependency-constrained, netstandard2.1, leaf within D8S.L0020, types for the D8S.L0020 personal, private, catch-all library."
+                //"netstandard2.1, leaf within D8S.L0020, service definitions for the D8S.L0020 personal, private, catch-all library"
+                //"Dependency-constrained, netstandard2.1, leaf within D8S.L0020, service implementations for the D8S.L0020 personal, private, catch-all library."
+                //"Service implementations for the D8S.L0020 personal, private, catch-all library."
+                //"Leaf sub-library for the F10Y.L0035 project."
+                //"Dependency injection infrastructure sub-library for the .NET Standard 2.1 platform library."
+                //"Logging sub-library for the .NET Standard 2.1 platform library."
+                //"Cross-platform (Windows and MacOS) script infrastructure implementation types library."
                 //"Unopinionated, generally-applicable overload types for the F10Y.T0018 library."
                 //"A netstandard2.1-specific library for the F10Y.L0033 Quartz.NET scheduler library."
                 //"Basic types library for the F10Y.L0005 .NET Standard 2.1 platform library."

@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0015.Private\source\D8S.S0015.Private.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -39,11 +39,12 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "D8S.S0015.R000"
+                "F10Y.L0026.T007"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Razor components library for the D8S.S0015 project. (unconstrained dependencies)"
+                "Instance set descriptor attribute types library."
+                //"Razor components library for the D8S.S0015 project. (unconstrained dependencies)"
                 //"Default library for the F10Y.L0061 Functionairy-opinioned but generally applicable .NET 6.0 foundation library."
                 //"Leaf, limited dependencies, netstandard2.1 library for the D8S.S0015 personal, private, entry-point executable."
                 //"Entity types for the D8S.S0015.H001 personal, private, entry-point executable database library."

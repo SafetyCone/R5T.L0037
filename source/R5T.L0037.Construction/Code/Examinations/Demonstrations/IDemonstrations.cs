@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0005\source\F10Y.L0005.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -39,11 +39,16 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "F10Y.L0026.T007"
+                "F10Y.L0005.L004.T000"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Instance set descriptor attribute types library."
+                //"Handler suite convention machinery library."
+                //"Functionality that should be in L000, except that it depends on new (non-language) types."
+                //"IHasX/IWithX derived types for the types in T000."
+                "Descriptor types library."
+                //"Location search descriptor machinery library."
+                //"Instance set descriptor attribute types library."
                 //"Razor components library for the D8S.S0015 project. (unconstrained dependencies)"
                 //"Default library for the F10Y.L0061 Functionairy-opinioned but generally applicable .NET 6.0 foundation library."
                 //"Leaf, limited dependencies, netstandard2.1 library for the D8S.S0015 personal, private, entry-point executable."

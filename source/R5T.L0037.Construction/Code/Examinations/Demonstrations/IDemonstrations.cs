@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0039\source\F10Y.L0039.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0015.Private\source\D8S.S0015.W000.Private.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0062\source\F10Y.L0062.Construction.sln"
@@ -39,11 +39,13 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "F10Y.L0039.T000"
+                "D8S.S0015.R001"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Types library for the F10Y.L0039 solution file generation and modification library."
+                "Static HTML Razor components library for D8S.S0015 projects."
+                //"Blazor client project for the D8S.S0015.W001.Server server project."
+                //"Static HTML Razor components library for the D8S.S0015.W000 project."
                 //"Types library from the instance descriptor machinery library."
                 //"Attribute descriptor types library."
                 //"Instances survey, outer."

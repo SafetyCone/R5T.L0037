@@ -31,7 +31,7 @@ namespace R5T.L0037.Construction
         {
             /// Inputs.
             var solutionFilePath =
-                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0004\source\F10Y.L0004.Construction.sln"
+                @"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0005\source\F10Y.L0005.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\davidcoats\D8S.S0015.Private\source\D8S.S0015.W000.Private.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.Z0003\source\F10Y.Z0003.Construction.sln"
                 //@"C:\Code\DEV\Git\GitHub\Functionairy\F10Y.L0026\source\F10Y.L0026.Construction.sln"
@@ -40,11 +40,12 @@ namespace R5T.L0037.Construction
                 .ToSolutionFilePath()
                 ;
             var projectName =
-                "F10Y.L0004.L001"
+                "F10Y.L0005.L005"
                 .ToProjectName()
                 ;
             var projectDescription =
-                "Leaf, limited dependencies, netstandard2.1 sub-library for the F10Y.L0004 organizational catch-all library."
+                "Cross-platform functionality library for the F10Y.L0005 netstandard2.1 platform library."
+                //"Leaf, limited dependencies, netstandard2.1 sub-library for the F10Y.L0004 organizational catch-all library."
                 //"Leaf, limited dependencies (foundation libraries only), support library from the personal, private, catch-all library. (NET LATEST)"
                 //"Support library with limited dependencies for the D8S.S0015 personal, private, entry-point executable project."
                 //"Common library for the D8S.S0015.W001 project (shared by D8S.S0015.W001.Client and D8S.S0015.W001.Server)."
